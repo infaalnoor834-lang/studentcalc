@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Free CGPA and Attendance Calculator for students. Calculate your CGPA and find out how many classes you can miss or need to attend.">
+    <meta name="keywords" content="CGPA calculator, GPA calculator, attendance calculator, student calculator">
+    <meta name="author" content="StudentCalc">
+
+    <title>StudentCalc - CGPA & Attendance Calculator</title>
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav">
+            <a href="#" class="logo">
+                Student<span>Calc</span>
+            </a>
+
+            <nav>
+                <a href="#cgpa">CGPA</a>
+                <a href="#attendance">Attendance</a>
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+                    🌙
+                </button>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+
+            <div class="hero-text">
+                <div class="badge">🎓 Free Student Tools</div>
+
+                <h1>
+                    Calculate Your
+                    <span>CGPA & Attendance</span>
+                    Easily
+                </h1>
+
+                <p>
+                    Simple, fast and free calculators designed for students.
+                    Calculate your CGPA and track your attendance in seconds.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#cgpa" class="btn primary-btn">Calculate CGPA</a>
+                    <a href="#attendance" class="btn secondary-btn">Check Attendance</a>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="floating-card card-one">
+                    <span>CGPA</span>
+                    <strong>3.42</strong>
+                </div>
+
+                <div class="floating-card card-two">
+                    <span>Attendance</span>
+                    <strong>87%</strong>
+                </div>
+
+                <div class="calculator-icon">
+                    🎓
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CGPA Calculator -->
+    <section id="cgpa" class="calculator-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span>01</span>
+                <h2>CGPA Calculator</h2>
+                <p>
+                    Add your subjects, credit hours and grades to calculate your CGPA.
+                </p>
+            </div>
+
+            <div class="calculator-card">
+
+                <div class="table-header">
+                    <div>Subject</div>
+                    <div>Credit Hours</div>
+                    <div>Grade</div>
+                    <div>Grade Point</div>
+                    <div></div>
+                </div>
+
+                <div id="subjectsContainer">
+
+                    <div class="subject-row">
+                        <input type="text" placeholder="e.g. Data Structures" class="subject-name">
+
+                        <input type="number"
+                               min="1"
+                               max="10"
+                               value="3"
+                               class="credit-hours">
+
+                        <select class="grade">
+                            <option value="4.0">A</option>
+                            <option value="3.7">A-</option>
+                            <option value="3.3">B+</option>
+                            <option value="3.0" selected>B</option>
+                            <option value="2.7">B-</option>
+                            <option value="2.3">C+</option>
+                            <option value="2.0">C</option>
+                            <option value="1.7">C-</option>
+                            <option value="1.3">D+</option>
+                            <option value="1.0">D</option>
+                            <option value="0.0">F</option>
+                        </select>
+
+                        <input type="text" value="3.0" class="grade-point" readonly>
+
+                        <button class="delete-btn" onclick="removeSubject(this)">
+                            ×
+                        </button>
+                    </div>
+
+                    <div class="subject-row">
+                        <input type="text" placeholder="e.g. Database Systems" class="subject-name">
+
+                        <input type="number"
+                               min="1"
+                               max="10"
+                               value="3"
+                               class="credit-hours">
+
+                        <select class="grade">
+                            <option value="4.0">A</option>
+                            <option value="3.7">A-</option>
+                            <option value="3.3">B+</option>
+                            <option value="3.0" selected>B</option>
+                            <option value="2.7">B-</option>
+                            <option value="2.3">C+</option>
+                            <option value="2.0">C</option>
+                            <option value="1.7">C-</option>
+                            <option value="1.3">D+</option>
+                            <option value="1.0">D</option>
+                            <option value="0.0">F</option>
+                        </select>
+
+                        <input type="text" value="3.0" class="grade-point" readonly>
+
+                        <button class="delete-btn" onclick="removeSubject(this)">
+                            ×
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="calculator-actions">
+                    <button id="addSubject" class="btn secondary-btn">
+                        + Add Subject
+                    </button>
+
+                    <button id="calculateCGPA" class="btn primary-btn">
+                        Calculate CGPA
+                    </button>
+                </div>
+
+                <div id="cgpaResult" class="result-box">
+                    <div>
+                        <span>Your CGPA</span>
+                        <strong id="cgpaValue">0.00</strong>
+                    </div>
+
+                    <div>
+                        <span>Total Credit Hours</span>
+                        <strong id="totalCredits">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Total Quality Points</span>
+                        <strong id="qualityPoints">0.00</strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Attendance Calculator -->
+    <section id="attendance" class="calculator-section attendance-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span>02</span>
+                <h2>Attendance Calculator</h2>
+                <p>
+                    Find your current attendance and calculate how many classes
+                    you can miss or need to attend.
+                </p>
+            </div>
+
+            <div class="attendance-grid">
+
+                <div class="calculator-card attendance-card">
+
+                    <div class="input-group">
+                        <label for="conducted">
+                            Classes Conducted
+                        </label>
+
+                        <input
+                            type="number"
+                            id="conducted"
+                            min="0"
+                            placeholder="e.g. 40"
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="attended">
+                            Classes Attended
+                        </label>
+
+                        <input
+                            type="number"
+                            id="attended"
+                            min="0"
+                            placeholder="e.g. 34"
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="requiredAttendance">
+                            Required Attendance %
+                        </label>
+
+                        <input
+                            type="number"
+                            id="requiredAttendance"
+                            min="1"
+                            max="100"
+                            value="75"
+                        >
+                    </div>
+
+                    <button id="calculateAttendance" class="btn primary-btn full-btn">
+                        Calculate Attendance
+                    </button>
+
+                </div>
+
+
+                <div class="calculator-card attendance-result-card">
+
+                    <div class="attendance-circle">
+                        <div>
+                            <strong id="attendancePercentage">0%</strong>
+                            <span>Current</span>
+                        </div>
+                    </div>
+
+                    <div class="attendance-status" id="attendanceStatus">
+                        Enter your class details
+                    </div>
+
+                    <div class="attendance-info">
+
+                        <div class="info-item">
+                            <span>Classes You Can Miss</span>
+                            <strong id="canMiss">0</strong>
+                        </div>
+
+                        <div class="info-item">
+                            <span>Classes Needed</span>
+                            <strong id="classesNeeded">0</strong>
+                        </div>
+
+                    </div>
+
+                    <p class="small-note">
+                        Results are calculated based on the required attendance percentage.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+
+            <div class="section-heading center">
+                <span>WHY STUDENTCALC?</span>
+                <h2>Simple Tools for Students</h2>
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast & Easy</h3>
+                    <p>
+                        Get your results instantly without complicated calculations.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>
+                        Use the calculators easily on your phone, tablet or laptop.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Free to Use</h3>
+                    <p>
+                        No registration or account is required to use our calculators.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+                <a href="#" class="logo">
+                    Student<span>Calc</span>
+                </a>
+
+                <p>
+                    Simple academic calculators for students.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#cgpa">CGPA Calculator</a>
+                <a href="#attendance">Attendance Calculator</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 StudentCalc. All rights reserved.
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
